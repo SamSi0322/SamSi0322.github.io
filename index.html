@@ -1,0 +1,360 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Yuan Si</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
+  <style>
+    :root {
+      --primary: #1a1a2e;
+      --accent: #0f3460;
+      --link: #1565c0;
+      --bg: #fafafa;
+      --card: #ffffff;
+      --text: #333;
+      --muted: #666;
+      --border: #e0e0e0;
+    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      color: var(--text);
+      background: var(--bg);
+      line-height: 1.6;
+    }
+
+    a { color: var(--link); text-decoration: none; }
+    a:hover { text-decoration: underline; }
+
+    .container {
+      max-width: 860px;
+      margin: 0 auto;
+      padding: 0 24px;
+    }
+
+    /* Header */
+    header {
+      background: var(--primary);
+      color: #fff;
+      padding: 48px 0 40px;
+    }
+
+    .header-content {
+      display: flex;
+      align-items: center;
+      gap: 36px;
+    }
+
+    .avatar {
+      width: 140px;
+      height: 140px;
+      border-radius: 50%;
+      border: 3px solid rgba(255,255,255,0.3);
+      object-fit: cover;
+      flex-shrink: 0;
+    }
+
+    .avatar-placeholder {
+      width: 140px;
+      height: 140px;
+      border-radius: 50%;
+      border: 3px solid rgba(255,255,255,0.3);
+      background: var(--accent);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 48px;
+      font-weight: 700;
+      flex-shrink: 0;
+    }
+
+    header h1 { font-size: 2rem; margin-bottom: 4px; }
+    header .subtitle { color: rgba(255,255,255,0.8); font-size: 0.95rem; margin-bottom: 12px; }
+
+    .links { display: flex; flex-wrap: wrap; gap: 16px; }
+    .links a {
+      color: rgba(255,255,255,0.85);
+      font-size: 0.9rem;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      transition: color 0.2s;
+    }
+    .links a:hover { color: #fff; text-decoration: none; }
+
+    /* Sections */
+    section { padding: 36px 0; border-bottom: 1px solid var(--border); }
+    section:last-child { border-bottom: none; }
+    section h2 {
+      font-size: 1.3rem;
+      color: var(--primary);
+      margin-bottom: 16px;
+      padding-bottom: 6px;
+      border-bottom: 2px solid var(--accent);
+      display: inline-block;
+    }
+
+    /* Research Interests */
+    .interests {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+    .interest-tag {
+      background: #e3f2fd;
+      color: var(--accent);
+      padding: 6px 14px;
+      border-radius: 20px;
+      font-size: 0.88rem;
+      font-weight: 500;
+    }
+
+    /* Publications */
+    .pub {
+      margin-bottom: 16px;
+      padding-left: 16px;
+      border-left: 3px solid var(--border);
+    }
+    .pub:hover { border-left-color: var(--accent); }
+    .pub .title { font-weight: 600; }
+    .pub .authors { color: var(--muted); font-size: 0.9rem; }
+    .pub .authors strong { color: var(--text); }
+    .pub .venue { font-style: italic; font-size: 0.88rem; color: var(--muted); }
+    .pub .pub-links { margin-top: 4px; }
+    .pub .pub-links a {
+      font-size: 0.82rem;
+      background: #f0f0f0;
+      padding: 2px 10px;
+      border-radius: 4px;
+      margin-right: 6px;
+    }
+    .pub .pub-links a:hover { background: #e0e0e0; }
+
+    /* Experience */
+    .exp {
+      margin-bottom: 20px;
+    }
+    .exp-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      flex-wrap: wrap;
+    }
+    .exp-header h3 { font-size: 1rem; }
+    .exp-header .date { color: var(--muted); font-size: 0.88rem; }
+    .exp .org { color: var(--muted); font-size: 0.9rem; font-style: italic; }
+    .exp ul { margin-top: 6px; padding-left: 20px; }
+    .exp li { font-size: 0.92rem; margin-bottom: 4px; }
+
+    /* Projects */
+    .projects-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+      gap: 14px;
+    }
+    .project-card {
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 16px;
+      background: var(--card);
+      transition: box-shadow 0.2s;
+    }
+    .project-card:hover { box-shadow: 0 2px 8px rgba(0,0,0,0.08); }
+    .project-card h3 { font-size: 0.95rem; margin-bottom: 6px; }
+    .project-card h3 a { color: var(--text); }
+    .project-card p { font-size: 0.85rem; color: var(--muted); }
+
+    /* Footer */
+    footer {
+      text-align: center;
+      padding: 24px 0;
+      color: var(--muted);
+      font-size: 0.82rem;
+    }
+
+    @media (max-width: 600px) {
+      .header-content { flex-direction: column; text-align: center; }
+      .links { justify-content: center; }
+      .exp-header { flex-direction: column; }
+      .projects-grid { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <div class="container">
+    <div class="header-content">
+      <div class="avatar-placeholder">YS</div>
+      <div>
+        <h1>Yuan Si</h1>
+        <p class="subtitle">Undergraduate Researcher &middot; University of Waterloo</p>
+        <p class="subtitle">Math / Data Science &amp; Combinatorics Optimization &amp; Pure Math (co-op)</p>
+        <div class="links">
+          <a href="mailto:y3si@uwaterloo.ca"><i class="fas fa-envelope"></i> y3si@uwaterloo.ca</a>
+          <a href="https://github.com/SamSi0322"><i class="fab fa-github"></i> GitHub</a>
+          <a href="https://www.linkedin.com/in/yuan-si-a686222aa/"><i class="fab fa-linkedin"></i> LinkedIn</a>
+          <a href="https://scholar.google.ca/citations?user=AZ4NnXIAAAAJ"><i class="ai ai-google-scholar"></i> Google Scholar</a>
+          <a href="resume/resume_Yuan.pdf"><i class="fas fa-file-pdf"></i> CV</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</header>
+
+<div class="container">
+
+  <section id="about">
+    <h2>About</h2>
+    <p>
+      I am an undergraduate researcher at the <strong>University of Waterloo</strong>, working with
+      <strong>Yale</strong> and <strong>UWaterloo's ECE Department</strong> on AI-driven tools for
+      programming education. My research focuses on using large language models and multimodal signals
+      (video, execution traces, code) to automatically debug, tutor, and evaluate block-based programs.
+      I have published 4 first-authored papers in this area, including one accepted at <strong>FSE 2026</strong>.
+    </p>
+  </section>
+
+  <section id="interests">
+    <h2>Research Interests</h2>
+    <div class="interests">
+      <span class="interest-tag">LLM-based Program Repair</span>
+      <span class="interest-tag">Multimodal Debugging</span>
+      <span class="interest-tag">AI for Computing Education</span>
+      <span class="interest-tag">Evaluation of LLMs</span>
+      <span class="interest-tag">Game Theory</span>
+    </div>
+  </section>
+
+  <section id="publications">
+    <h2>Publications</h2>
+
+    <div class="pub">
+      <div class="title">ViScratch: Using Large Language Models and Gameplay Videos for Automated Feedback in Scratch</div>
+      <div class="authors"><strong>Yuan Si</strong>, Daming Li, Hanyuan Shi, Jialu Zhang</div>
+      <div class="venue">ACM International Conference on the Foundations of Software Engineering (FSE) 2026 &mdash; Accepted, Open Review</div>
+      <div class="pub-links">
+        <a href="https://arxiv.org/abs/2509.11065"><i class="fas fa-file-pdf"></i> arXiv</a>
+      </div>
+    </div>
+
+    <div class="pub">
+      <div class="title">EcoScratch: Cost-Effective Multimodal Repair for Scratch Using Execution Feedback</div>
+      <div class="authors"><strong>Yuan Si</strong>, Ming Wang, Daming Li, Hanyuan Shi, Jialu Zhang</div>
+      <div class="venue">Preprint, 2026</div>
+      <div class="pub-links">
+        <a href="https://arxiv.org/abs/2603.29624"><i class="fas fa-file-pdf"></i> arXiv</a>
+      </div>
+    </div>
+
+    <div class="pub">
+      <div class="title">ScratchEval: A Multimodal Evaluation Framework for LLMs in Block-Based Programming</div>
+      <div class="authors"><strong>Yuan Si</strong>, Simeng Han, Daming Li, Hanyuan Shi, Jialu Zhang</div>
+      <div class="venue">Preprint, 2026</div>
+      <div class="pub-links">
+        <a href="https://arxiv.org/abs/2602.00757"><i class="fas fa-file-pdf"></i> arXiv</a>
+      </div>
+    </div>
+
+    <div class="pub">
+      <div class="title">Stitch: Step-by-step LLM Guided Tutoring for Scratch</div>
+      <div class="authors"><strong>Yuan Si</strong>, Kyle Qi, Daming Li, Hanyuan Shi, Jialu Zhang</div>
+      <div class="venue">Preprint, 2025</div>
+      <div class="pub-links">
+        <a href="https://arxiv.org/abs/2510.26634"><i class="fas fa-file-pdf"></i> arXiv</a>
+      </div>
+    </div>
+
+    <div class="pub">
+      <div class="title">A Gentle Introduction to Optimization</div>
+      <div class="authors"><strong>Yuan Si</strong></div>
+      <div class="venue">Textbook, 2024 &mdash; Adopted as required reading in 3 university courses</div>
+      <div class="pub-links">
+        <a href="https://co250textbook.sam-si.cn/CO250_textbook.pdf"><i class="fas fa-file-pdf"></i> PDF</a>
+      </div>
+    </div>
+  </section>
+
+  <section id="experience">
+    <h2>Experience</h2>
+
+    <div class="exp">
+      <div class="exp-header">
+        <h3>University Researcher &mdash; AI in Multidimensional Input</h3>
+        <span class="date">July 2025 &ndash; Present</span>
+      </div>
+      <div class="org">Yale / UWaterloo, ECE Department</div>
+      <ul>
+        <li>Led 4 first-authored papers on LLM-driven debugging, tutoring, and evaluation for Scratch (ViScratch accepted at FSE 2026).</li>
+        <li>Built multimodal repair systems fusing gameplay video, execution feedback, and project JSON to localize bugs and synthesize fixes via LLM-guided loops.</li>
+        <li>Developed an interactive tutoring system (Stitch) and a 100-project executable benchmark (ScratchEval) for evaluating LLM repair quality on block-based code.</li>
+      </ul>
+    </div>
+
+    <div class="exp">
+      <div class="exp-header">
+        <h3>University Researcher &mdash; Game Theory &amp; Graph Theory</h3>
+        <span class="date">Dec. 2024 &ndash; March 2025</span>
+      </div>
+      <div class="org">University of Waterloo, Combinatorics &amp; Optimization Department</div>
+      <ul>
+        <li>Derived Nash equilibria for multiplayer Rock-Paper-Scissors via linear programming. <a href="https://research.sam-si.cn/report_RPS.pdf">[report]</a></li>
+        <li>Modeled optimal Tesla charging station placement using independent dominating sets. <a href="https://research.sam-si.cn/report_Tesla.pdf">[report]</a></li>
+        <li>Analyzed cooperation dynamics in Public Goods Games. <a href="https://research.sam-si.cn/report_Public_goods.pdf">[report]</a></li>
+        <li>Investigated strategic dynamics in graph-based games (Cops and Robbers).</li>
+      </ul>
+    </div>
+
+    <div class="exp">
+      <div class="exp-header">
+        <h3>Microsoft Researcher &mdash; AI Trends</h3>
+        <span class="date">May 2024 &ndash; Aug. 2024</span>
+      </div>
+      <div class="org">Microsoft &mdash; Azure &amp; AI, Research</div>
+      <ul>
+        <li>Investigated AI scribe technologies for healthcare; synthesized findings into research recommendations for physician workflow automation.</li>
+        <li>Designed and evaluated improvements to an insurance chatbot through systematic analysis of user interaction data.</li>
+      </ul>
+    </div>
+  </section>
+
+  <section id="projects">
+    <h2>Projects</h2>
+    <div class="projects-grid">
+      <div class="project-card">
+        <h3><a href="https://github.com/SamSi0322/mcp-lint"><i class="fab fa-github"></i> mcp-lint</a></h3>
+        <p>Linter for MCP server tool definitions; 30 rules across 6 categories, zero-dependency.</p>
+      </div>
+      <div class="project-card">
+        <h3><a href="https://github.com/SamSi0322/mcp-optimizer"><i class="fab fa-github"></i> mcp-optimizer</a></h3>
+        <p>Reduces MCP schema token usage by up to 94% via compression and BM25 tool selection.</p>
+      </div>
+      <div class="project-card">
+        <h3><a href="https://github.com/SamSi0322/ai-secrets-scan"><i class="fab fa-github"></i> ai-secrets-scan</a></h3>
+        <p>AI secret scanner; 52 patterns, 20+ providers, MCP config scanning, SARIF output.</p>
+      </div>
+      <div class="project-card">
+        <h3><a href="https://github.com/SamSi0322/prompt-patrol"><i class="fab fa-github"></i> prompt-patrol</a></h3>
+        <p>Post-deploy LLM prompt monitoring with drift detection and multi-provider support.</p>
+      </div>
+      <div class="project-card">
+        <h3><a href="https://github.com/SamSi0322/DevToolkit"><i class="fab fa-github"></i> DevToolkit</a></h3>
+        <p>43 zero-dependency single-file Python CLI tools across 9 categories.</p>
+      </div>
+    </div>
+  </section>
+
+</div>
+
+<footer>
+  <div class="container">
+    &copy; 2026 Yuan Si &middot; Built with plain HTML/CSS
+  </div>
+</footer>
+
+</body>
+</html>
